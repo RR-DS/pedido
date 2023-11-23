@@ -24,8 +24,7 @@ class Cliente {
       map['boi_id'],
       map['boi_nome'],
       map['boi_cpf'],
-      // map['boi_idade'],
-    ); //id, nome, raca, idade)
+    ); //id, nome, cpf)
   }
 
   static List<Cliente> fromMaps(List<Map<String, dynamic>> maps) {
