@@ -15,7 +15,6 @@ class _EditarClienteState extends State<EditarClientePage> {
   final _formKey = GlobalKey<FormState>();
   final _nomeController = TextEditingController();
   final _cpfController = TextEditingController();
-  final _idadeController = TextEditingController();
   int _id = 0;
   Cliente? _cliente;
 

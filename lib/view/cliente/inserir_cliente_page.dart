@@ -61,7 +61,7 @@ class _InserirClienteState extends State<InserirClientePage> {
   void _salvar() async {
     Database db = await ConennectionFactory.factory.database;
     BoiDAO dao = BoiDAO(db);
-    Boi boi = Boi.novo(_nomeController.text, _racaController.text,
+    Boi boi = Cliente.novo(_nomeController.text, _racaController.text,
         int.parse(_idadeController.text));
     await dao.inserir(boi);
     ConennectionFactory.factory.close();
