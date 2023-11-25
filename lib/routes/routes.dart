@@ -1,6 +1,6 @@
-import 'package:munick/view/editar_cliente_page.dart';
-import 'package:munick/view/inserir_cliente_page.dart';
-import 'package:munick/view/listar_cliente_page.dart';
+import 'package:pedido/view/editar_cliente_page.dart';
+import 'package:pedido/view/inserir_cliente_page.dart';
+import 'package:pedido/view/listar_clientes_page.dart';
 
 class Routes {
   static const String list = ListarClientesPage.routeName;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:munick/main.dart';
-import 'package:munick/model/cliente.dart';
-import 'package:munick/repositories/cliente_repository.dart';
+import 'package:pedido/main.dart';
+import 'package:pedido/model/cliente.dart';
+import 'package:pedido/repositories/cliente_repository.dart';
 import 'package:pedido/model/cliente.dart';
 import '../helper/error.dart';
 
@@ -16,12 +16,14 @@ class InserirClientePage extends StatefulWidget {
 class _InserirClienteState extends State<InserirClientePage> {
   final _formKey = GlobalKey<FormState>();
   final _nomeController = TextEditingController();
+  final _sobrenomeController = TextEditingController();
   final _cpfController = TextEditingController();
 
   @override
 //DISPOSE
   void dispose() {
     _nomeController.dispose();
+    _sobrenomeController.dispose();
     _cpfController.dispose();
     super.dispose();
   }
@@ -47,6 +49,7 @@ class _InserirClienteState extends State<InserirClientePage> {
       ClienteRepository repository = ClienteRepository();
       await repository.inserir(cliente);
       _nomeController.clear();
+      _sobrenomeController.clear();
       _cpfController.clear();
 
       ScaffoldMessenger.of(context)
@@ -83,6 +86,22 @@ class _InserirClienteState extends State<InserirClientePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text('Nome'),
+                Expanded(
+                    child: TextFormField(
+                  controller: _nomeController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Campo não pode ser vazio';
+                    }
+                    return null;
+                  },
+                ))
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Sobrenome'),
                 Expanded(
                     child: TextFormField(
                   controller: _nomeController,

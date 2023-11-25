@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:munick/routes/routes.dart';
-import 'package:munick/view/editar_cliente_page.dart';
-import 'package:munick/view/inserir_cliente_page.dart';
-import 'package:munick/view/listar_cliente_page.dart';
+import 'package:pedido/routes/routes.dart';
+import 'package:pedido/view/editar_cliente_page.dart';
+import 'package:pedido/view/inserir_cliente_page.dart';
+import 'package:pedido/view/listar_cliente_page.dart';
 
 //MAIN.DART
 void main() {

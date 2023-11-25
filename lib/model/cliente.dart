@@ -4,16 +4,18 @@ import 'package:flutter/rendering.dart';
 class Cliente {
   int? id;
   String nome;
+  String sobrenome;
   String cpf;
   //int idade;
 
-  Cliente(this.id, this.nome, this.cpf);
-  Cliente.novo(this.nome, this.cpf);
+  Cliente(this.id, this.nome, this.cpf, this.sobrenome);
+  Cliente.novo(this.nome, this.cpf, this.sobrenome);
 
   Map<String, dynamic> toMap() {
     return {
       'cliente_id': this.id,
       'cliente_nome': this.nome,
+      'cliente_sobrenome': this.sobrenome,
       'cliente_cpf': this.cpf,
       //'boi_idade': this.idade
     };
@@ -23,6 +25,7 @@ class Cliente {
     return Cliente(
       map['boi_id'],
       map['boi_nome'],
+      map['boi_sobrenome'],
       map['boi_cpf'],
     ); //id, nome, cpf)
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:munick/main.dart';
-import 'package:munick/model/cliente.dart';
-import 'package:munick/repositories/cliente_repository.dart';
+import 'package:pedido/main.dart';
+import 'package:pedido/model/cliente.dart';
+import 'package:pedido/repositories/cliente_repository.dart';
 import 'package:pedido/model/cliente.dart';
 import '../helper/error.dart';
 
@@ -14,13 +14,16 @@ class EditarClientePage extends StatefulWidget {
 class _EditarClienteState extends State<EditarClientePage> {
   final _formKey = GlobalKey<FormState>();
   final _nomeController = TextEditingController();
+  final _sobrenomeController = TextEditingController();
   final _cpfController = TextEditingController();
   int _id = 0;
   Cliente? _cliente;
 
+//DISPOSE
   @override
   void dispose() async {
     _nomeController.dispose();
+    _sobrenomeController.dispose();
     _cpfController.dispose();
     super.dispose();
   }
@@ -34,11 +37,12 @@ class _EditarClienteState extends State<EditarClientePage> {
   }*/
 
   //OBTER NOVO - COM REST
-  void _obterBoi() async {
+  void _obterCliente() async {
     try {
       ClienteRepository repository = ClienteRepository();
       this._cliente = await repository.buscar(this._id);
       _nomeController.text = this._cliente!.nome;
+      _sobrenomeController.text = this._cliente!.sobrenome;
       _cpfController.text = this._cliente!.cpf;
     } catch (exception) {
       showError(context, "Erro recuperando cliente", exception.toString());
@@ -85,6 +89,7 @@ class _EditarClienteState extends State<EditarClientePage> {
 //SALVAR NOVO - COM REST
   void _salvar() async {
     this._cliente!.nome = _nomeController.text;
+    this._cliente!.sobrenome = _sobrenomeController.text;
     this._cliente!.cpf = _cpfController.text;
 
     try {
@@ -115,6 +120,19 @@ class _EditarClienteState extends State<EditarClientePage> {
               Expanded(
                   child: TextFormField(
                 controller: _nomeController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Campo não pode ser vazio';
+                  }
+                  return null;
+                },
+              ))
+            ]),
+            Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+              Text("Sobrenome:"),
+              Expanded(
+                  child: TextFormField(
+                controller: _sobrenomeController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Campo não pode ser vazio';

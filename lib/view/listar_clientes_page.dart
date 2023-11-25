@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:munick/main.dart';
-import 'package:munick/model/cliente.dart';
-import 'package:munick/repositories/cliente_repository.dart';
-import 'package:munick/view/editar_cliente_page.dart';
+import 'package:pedido/helper/error.dart';
+import 'package:pedido/main.dart';
+import 'package:pedido/model/cliente.dart';
+import 'package:pedido/repositories/cliente_repository.dart';
+import 'package:pedido/view/cliente/editar_cliente_page.dart';
+import 'package:pedido/view/editar_cliente_page.dart';
 import 'package:pedido/model/cliente.dart';
 import '../helper/error.dart';
 
@@ -94,7 +96,8 @@ ConennectionFactory.factory.close();
               content: Column(
                 children: [
                   Text("Nome: ${cliente.nome}"),
-                  Text("Raça: ${cliente.cpf}"),
+                  Text("Sobrenome: ${cliente.sobrenome}"),
+                  Text("CPF: ${cliente.cpf}"),
                 ],
               ),
               actions: [
