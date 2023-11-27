@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pedido/helper/error.dart';
 import 'package:pedido/main.dart';
 import 'package:pedido/model/cliente.dart';
-import 'package:pedido/repositories/cliente_repository.dart';
-import 'package:pedido/model/cliente.dart';
-import '../helper/error.dart';
 
 class EditarClientePage extends StatefulWidget {
   static const String routeName = '/edit';
@@ -103,7 +101,7 @@ class _EditarClienteState extends State<EditarClientePage> {
   }
 
 // CRUD | editar_boi_page.dart DAO
-/*
+/*-
   void _salvar() async {
     this._boi.nome = _nomeController.text;
     this._boi.raca = _racaController.text;

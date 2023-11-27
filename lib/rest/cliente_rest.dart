@@ -1,10 +1,8 @@
-import 'dart:html';
-import 'dart:io';
-
+/*import 'dart:html';
+import 'dart:io';*/
 import 'package:http/http.dart' as http;
 import 'package:pedido/model/cliente.dart';
-import 'package:pedido/rest/api.dart';
-import 'package:pedido/model/cliente.dart';
+import 'api.dart';
 
 class ClienteRest {
   Future<Cliente> buscar(int id) async {

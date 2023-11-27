@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pedido/helper/error.dart';
 import 'package:pedido/main.dart';
 import 'package:pedido/model/cliente.dart';
-import 'package:pedido/repositories/cliente_repository.dart';
-import 'package:pedido/model/cliente.dart';
-import '../helper/error.dart';
 
 class InserirClientePage extends StatefulWidget {
   static const String routeName = '/insert';
@@ -43,7 +41,8 @@ class _InserirClienteState extends State<InserirClientePage> {
   //--- SALVAR ANTIGO----
 
   void _salvar() async {
-    Cliente cliente = Cliente.novo(_nomeController.text, _cpfController.text);
+    Cliente cliente = Cliente.novo(
+        _nomeController.text, _sobrenomeController.text, _cpfController.text);
 
     try {
       ClienteRepository repository = ClienteRepository();

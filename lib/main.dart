@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pedido/routes/routes.dart';
-import 'package:pedido/view/editar_cliente_page.dart';
-import 'package:pedido/view/inserir_cliente_page.dart';
-import 'package:pedido/view/listar_cliente_page.dart';
+import 'routes/routes.dart';
+import 'view/editar_cliente_page.dart';
+import 'view/inserir_cliente_page.dart';
+import 'view/listar_clientes_page.dart';
 
 //MAIN.DART
 void main() {
