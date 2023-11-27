@@ -104,7 +104,7 @@ class _InserirClienteState extends State<InserirClientePage> {
                 Text('Sobrenome'),
                 Expanded(
                     child: TextFormField(
-                  controller: _nomeController,
+                  controller: _sobrenomeController,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Campo não pode ser vazio';
