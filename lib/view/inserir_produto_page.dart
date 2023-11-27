@@ -5,7 +5,7 @@ import 'package:pedido/model/produto.dart';
 import 'package:pedido/repositories/produto_repository.dart';
 
 class InserirProdutoPage extends StatefulWidget {
-  static const String routeName = '/insert';
+  static const String routeNameP = '/insertProduto';
 
   @override
   _InserirProdutoState createState() => _InserirProdutoState();

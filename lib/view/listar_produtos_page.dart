@@ -7,7 +7,7 @@ import 'editar_produto_page.dart';
 
 //LISTARBOIPAGE
 class ListarProdutosPage extends StatefulWidget {
-  static const String routeName = '/list';
+  static const String routeNameP = '/listProduto';
   @override
   State<StatefulWidget> createState() => _ListarProdutosState();
 }
@@ -67,9 +67,9 @@ OBTERTODOS-SQLITE-DAOECONECTION
       ProdutoRepository repository = ProdutoRepository();
       await repository.remover(id);
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Boi $id removido com sucesso')));
+          SnackBar(content: Text('Produto $id removido com sucesso')));
     } catch (exception) {
-      showError(context, "Erro removendo boi", exception.toString());
+      showError(context, "Erro removendo produto", exception.toString());
     }
   }
 //REMOVEBOI-SQLITE-DAOECONECTION
@@ -148,7 +148,7 @@ ConennectionFactory.factory.close();
     Produto c = _lista[index];
     Navigator.pushNamed(
       context,
-      EditarProdutoPage.routeName,
+      EditarProdutoPage.routeNameP,
       arguments: <String, int>{"id": c.id!},
     );
   }

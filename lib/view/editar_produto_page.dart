@@ -5,7 +5,7 @@ import 'package:pedido/model/produto.dart';
 import 'package:pedido/repositories/produto_repository.dart';
 
 class EditarProdutoPage extends StatefulWidget {
-  static const String routeName = '/edit';
+  static const String routeNameP = '/editProduto';
   @override
   _EditarProdutoState createState() => _EditarProdutoState();
 }
