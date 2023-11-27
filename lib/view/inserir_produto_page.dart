@@ -84,7 +84,7 @@ class _InserirProdutoState extends State<InserirProdutoPage> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Descrição'),
+                Text('Nome'),
                 Expanded(
                     child: TextFormField(
                   controller: _descricaoController,
