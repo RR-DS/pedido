@@ -81,37 +81,40 @@ class AppDrawer extends StatelessWidget {
               text: 'Inserir Cliente',
               onTap: () =>
                   Navigator.pushReplacementNamed(context, Routes.insert)),
-          Divider(),
+//Divider(),
           _createDrawerItem(
               icon: Icons.list,
               text: 'Listar Clientes',
               onTap: () =>
                   Navigator.pushReplacementNamed(context, Routes.list)),
-          ListTile(title: Text('0.0.1'), onTap: () {}),
+          Divider(),
+          //ListTile(title: Text('0.0.1'), onTap: () {}),
           _createDrawerItem(
               icon: Icons.add,
               text: 'Inserir Produto',
               onTap: () => Navigator.pushReplacementNamed(
                   context, Routes.insertProduto)),
-          Divider(),
+//Divider(),
           _createDrawerItem(
               icon: Icons.list,
               text: 'Listar Produtos',
               onTap: () =>
                   Navigator.pushReplacementNamed(context, Routes.listProduto)),
-          ListTile(title: Text('0.0.1'), onTap: () {}),
+          Divider(),
+          // ListTile(title: Text('0.0.1'), onTap: () {}),
           _createDrawerItem(
               icon: Icons.add,
               text: 'Inserir Pedido',
               onTap: () =>
                   Navigator.pushReplacementNamed(context, Routes.insertPdd)),
-          Divider(),
+//Divider(),
           _createDrawerItem(
               icon: Icons.list,
               text: 'Listar Pedido',
               onTap: () =>
                   Navigator.pushReplacementNamed(context, Routes.listPdd)),
-          ListTile(title: Text('0.0.1'), onTap: () {}),
+          Divider(),
+          // ListTile(title: Text('0.0.1'), onTap: () {}),
         ],
       ),
     );
@@ -132,7 +135,7 @@ Widget _createHeader() {
         Positioned(
             bottom: 12.0,
             left: 16.0,
-            child: Text("Cadastro de Clientes",
+            child: Text("Cadastro de Pedidos",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
