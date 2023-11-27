@@ -12,25 +12,25 @@ class EditarProdutoPage extends StatefulWidget {
 
 class _EditarProdutoState extends State<EditarProdutoPage> {
   final _formKey = GlobalKey<FormState>();
-  final _nomeController = TextEditingController();
-  final _sobrenomeController = TextEditingController();
-  final _cpfController = TextEditingController();
+  final _descricaoController = TextEditingController();
+  //final _sobrenomeController = TextEditingController();
+  //final _cpfController = TextEditingController();
   int _id = 0;
   Produto? _produto;
 
 //DISPOSE
   @override
   void dispose() async {
-    _nomeController.dispose();
-    _sobrenomeController.dispose();
-    _cpfController.dispose();
+    _descricaoController.dispose();
+    //_sobrenomeController.dispose();
+    // _cpfController.dispose();
     super.dispose();
   }
 
 //OBTER ANTIGO - SEM REST
   /*void _obterBoi() async {
     this._boi = Boi(this._id, "Boi ${this._id}", "Raça", 10);
-    _nomeController.text = this._boi!.nome;
+    _descricaoController.text = this._boi!.descricao;
     _racaController.text = this._boi!.raca;
     _idadeController.text = this._boi!.idade.toString();
   }*/
@@ -40,9 +40,9 @@ class _EditarProdutoState extends State<EditarProdutoPage> {
     try {
       ProdutoRepository repository = ProdutoRepository();
       this._produto = await repository.buscar(this._id);
-      _nomeController.text = this._produto!.nome;
-      _sobrenomeController.text = this._produto!.sobrenome;
-      _cpfController.text = this._produto!.cpf;
+      _descricaoController.text = this._produto!.descricao;
+      //_sobrenomeController.text = this._produto!.sobrenome;
+      //_cpfController.text = this._produto!.cpf;
     } catch (exception) {
       showError(context, "Erro recuperando cliente", exception.toString());
       Navigator.pop(context);
@@ -58,14 +58,14 @@ class _EditarProdutoState extends State<EditarProdutoPage> {
 
     ConennectionFactory.factory.close();
 
-    _nomeController.text = this._boi.nome;
-    _nomeController.text = this._boi.raca;
-    _nomeController.text = this._boi.idade.toString();
+    _descricaoController.text = this._boi.descricao;
+    _descricaoController.text = this._boi.raca;
+    _descricaoController.text = this._boi.idade.toString();
 
     try {
       ProdutoRepository repository = ProdutoRepository();
       this._boi = await repository.buscar(this._id);
-      _nomeController.text = this._boi!.nome;
+      _descricaoController.text = this._boi!.descricao;
       _racaController.text = this._boi!.raca;
       _idadeController.text = this._boi!.idade.toString();
     } catch (exception) {
@@ -76,7 +76,7 @@ class _EditarProdutoState extends State<EditarProdutoPage> {
 */
 //SALVAR ANTIGO - SEM REST
   /* void _salvar() async {
-    this._boi!.nome = _nomeController.text;
+    this._boi!.descricao = _descricaoController.text;
     this._boi!.raca = _racaController.text;
     this._boi!.idade = int.parse(_idadeController.text);
 
@@ -87,9 +87,9 @@ class _EditarProdutoState extends State<EditarProdutoPage> {
 
 //SALVAR NOVO - COM REST
   void _salvar() async {
-    this._produto!.nome = _nomeController.text;
-    this._produto!.sobrenome = _sobrenomeController.text;
-    this._produto!.cpf = _cpfController.text;
+    this._produto!.descricao = _descricaoController.text;
+    //this._produto!.sobrenome = _sobrenomeController.text;
+    //this._produto!.cpf = _cpfController.text;
 
     try {
       ProdutoRepository repository = ProdutoRepository();
@@ -104,7 +104,7 @@ class _EditarProdutoState extends State<EditarProdutoPage> {
 // CRUD | editar_boi_page.dart DAO
 /*-
   void _salvar() async {
-    this._boi.nome = _nomeController.text;
+    this._boi.descricao = _descricaoController.text;
     this._boi.raca = _racaController.text;
     this._boi.idade = int.parse(_idadeController.text);
   }  */
@@ -115,10 +115,10 @@ class _EditarProdutoState extends State<EditarProdutoPage> {
           key: _formKey,
           child: ListView(shrinkWrap: true, children: [
             Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              Text("Nome:"),
+              Text("Descricao:"),
               Expanded(
                   child: TextFormField(
-                controller: _nomeController,
+                controller: _descricaoController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Campo não pode ser vazio';
@@ -127,8 +127,8 @@ class _EditarProdutoState extends State<EditarProdutoPage> {
                 },
               ))
             ]),
-            Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              Text("Sobrenome:"),
+            /* Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+              Text("Sobredescricao:"),
               Expanded(
                   child: TextFormField(
                 controller: _sobrenomeController,
@@ -153,7 +153,6 @@ class _EditarProdutoState extends State<EditarProdutoPage> {
                 },
               ))
             ]),
-            /*
             Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
               Text("Idade"),
               Expanded(
@@ -201,7 +200,7 @@ class _EditarProdutoState extends State<EditarProdutoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Editar Cliente"),
+        title: Text("Editar Produto"),
       ),
       drawer: AppDrawer(),
       body: _buildForm(context),

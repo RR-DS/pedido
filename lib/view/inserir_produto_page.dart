@@ -14,22 +14,22 @@ class InserirProdutoPage extends StatefulWidget {
 //INSERIRBOIDART
 class _InserirProdutoState extends State<InserirProdutoPage> {
   final _formKey = GlobalKey<FormState>();
-  final _nomeController = TextEditingController();
-  final _sobrenomeController = TextEditingController();
-  final _cpfController = TextEditingController();
+  final _descricaoController = TextEditingController();
+  //final _sobrenomeController = TextEditingController();
+  //final _cpfController = TextEditingController();
 
   @override
 //DISPOSE
   void dispose() {
-    _nomeController.dispose();
-    _sobrenomeController.dispose();
-    _cpfController.dispose();
+    _descricaoController.dispose();
+    // _sobrenomeController.dispose();
+    //_cpfController.dispose();
     super.dispose();
   }
 
 //SALVAR - INT COM BANCO - ANTIGO
   /* void _salvar() async {
-    _nomeController.clear();
+    _descricaoController.clear();
     _racaController.clear();
     _idadeController.clear();
 
@@ -42,15 +42,14 @@ class _InserirProdutoState extends State<InserirProdutoPage> {
   //--- SALVAR ANTIGO----
 
   void _salvar() async {
-    Produto produto = Produto.novo(
-        _nomeController.text, _sobrenomeController.text, _cpfController.text);
+    Produto produto = Produto.novo(_descricaoController.text);
 
     try {
       ProdutoRepository repository = ProdutoRepository();
       await repository.inserir(produto);
-      _nomeController.clear();
-      _sobrenomeController.clear();
-      _cpfController.clear();
+      _descricaoController.clear();
+      //_sobrenomeController.clear();
+      //_cpfController.clear();
 
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('Produto salvo com sucesso')));
@@ -64,11 +63,11 @@ class _InserirProdutoState extends State<InserirProdutoPage> {
   void _salvar() async {
     Database db = await ConennectionFactory.factory.database;
     BoiDAO dao = BoiDAO(db);
-    Boi boi = Produto.novo(_nomeController.text, _racaController.text,
+    Boi boi = Produto.novo(_descricaoController.text, _racaController.text,
         int.parse(_idadeController.text));
     await dao.inserir(boi);
     ConennectionFactory.factory.close();
-    _nomeController.clear();
+    _descricaoController.clear();
     _racaController.clear();
     _idadeController.clear();
 
@@ -85,10 +84,10 @@ class _InserirProdutoState extends State<InserirProdutoPage> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Nome'),
+                Text('Descrição'),
                 Expanded(
                     child: TextFormField(
-                  controller: _nomeController,
+                  controller: _descricaoController,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Campo não pode ser vazio';
@@ -98,10 +97,10 @@ class _InserirProdutoState extends State<InserirProdutoPage> {
                 ))
               ],
             ),
-            Row(
+            /*Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Sobrenome'),
+                Text('Sobredescricao'),
                 Expanded(
                     child: TextFormField(
                   controller: _sobrenomeController,
@@ -130,7 +129,7 @@ class _InserirProdutoState extends State<InserirProdutoPage> {
                 ))
               ],
             ),
-            /*Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text('Idade'),

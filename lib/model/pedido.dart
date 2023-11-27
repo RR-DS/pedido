@@ -3,20 +3,20 @@ import 'dart:convert';
 
 class Pedido {
   int? id;
-  String nome;
-  String sobrenome;
-  String cpf;
+  String data;
+  String idproduto;
+  String quantidade;
   //int idade;
 
-  Pedido(this.id, this.nome, this.cpf, this.sobrenome);
-  Pedido.novo(this.nome, this.cpf, this.sobrenome);
+  Pedido(this.id, this.data, this.quantidade, this.idproduto);
+  Pedido.novo(this.data, this.quantidade, this.idproduto);
 
   Map<String, dynamic> toMap() {
     return {
       'pedido_id': this.id,
-      'pedido_nome': this.nome,
-      'pedido_sobrenome': this.sobrenome,
-      'pedido_cpf': this.cpf,
+      'pedido_data': this.data,
+      'pedido_idproduto': this.idproduto,
+      'pedido_quantidade': this.quantidade,
       //'boi_idade': this.idade
     };
   }
@@ -24,10 +24,10 @@ class Pedido {
   static Pedido fromMap(Map<String, dynamic> map) {
     return Pedido(
       map['boi_id'],
-      map['boi_nome'],
-      map['boi_sobrenome'],
-      map['boi_cpf'],
-    ); //id, nome, cpf)
+      map['boi_data'],
+      map['boi_idproduto'],
+      map['boi_quantidade'],
+    ); //id, data, quantidade)
   }
 
   static List<Pedido> fromMaps(List<Map<String, dynamic>> maps) {

@@ -12,25 +12,25 @@ class EditarPedidoPage extends StatefulWidget {
 
 class _EditarPedidoState extends State<EditarPedidoPage> {
   final _formKey = GlobalKey<FormState>();
-  final _nomeController = TextEditingController();
-  final _sobrenomeController = TextEditingController();
-  final _cpfController = TextEditingController();
+  final _dataController = TextEditingController();
+  final _idprodutoController = TextEditingController();
+  final _quantidadeController = TextEditingController();
   int _id = 0;
   Pedido? _pedido;
 
 //DISPOSE
   @override
   void dispose() async {
-    _nomeController.dispose();
-    _sobrenomeController.dispose();
-    _cpfController.dispose();
+    _dataController.dispose();
+    _idprodutoController.dispose();
+    _quantidadeController.dispose();
     super.dispose();
   }
 
 //OBTER ANTIGO - SEM REST
   /*void _obterBoi() async {
     this._boi = Boi(this._id, "Boi ${this._id}", "Raça", 10);
-    _nomeController.text = this._boi!.nome;
+    _dataController.text = this._boi!.data;
     _racaController.text = this._boi!.raca;
     _idadeController.text = this._boi!.idade.toString();
   }*/
@@ -40,9 +40,9 @@ class _EditarPedidoState extends State<EditarPedidoPage> {
     try {
       PedidoRepository repository = PedidoRepository();
       this._pedido = await repository.buscar(this._id);
-      _nomeController.text = this._pedido!.nome;
-      _sobrenomeController.text = this._pedido!.sobrenome;
-      _cpfController.text = this._pedido!.cpf;
+      _dataController.text = this._pedido!.data;
+      _idprodutoController.text = this._pedido!.idproduto;
+      _quantidadeController.text = this._pedido!.quantidade;
     } catch (exception) {
       showError(context, "Erro recuperando cliente", exception.toString());
       Navigator.pop(context);
@@ -58,14 +58,14 @@ class _EditarPedidoState extends State<EditarPedidoPage> {
 
     ConennectionFactory.factory.close();
 
-    _nomeController.text = this._boi.nome;
-    _nomeController.text = this._boi.raca;
-    _nomeController.text = this._boi.idade.toString();
+    _dataController.text = this._boi.data;
+    _dataController.text = this._boi.raca;
+    _dataController.text = this._boi.idade.toString();
 
     try {
       PedidoRepository repository = PedidoRepository();
       this._boi = await repository.buscar(this._id);
-      _nomeController.text = this._boi!.nome;
+      _dataController.text = this._boi!.data;
       _racaController.text = this._boi!.raca;
       _idadeController.text = this._boi!.idade.toString();
     } catch (exception) {
@@ -76,7 +76,7 @@ class _EditarPedidoState extends State<EditarPedidoPage> {
 */
 //SALVAR ANTIGO - SEM REST
   /* void _salvar() async {
-    this._boi!.nome = _nomeController.text;
+    this._boi!.data = _dataController.text;
     this._boi!.raca = _racaController.text;
     this._boi!.idade = int.parse(_idadeController.text);
 
@@ -87,15 +87,15 @@ class _EditarPedidoState extends State<EditarPedidoPage> {
 
 //SALVAR NOVO - COM REST
   void _salvar() async {
-    this._pedido!.nome = _nomeController.text;
-    this._pedido!.sobrenome = _sobrenomeController.text;
-    this._pedido!.cpf = _cpfController.text;
+    this._pedido!.data = _dataController.text;
+    this._pedido!.idproduto = _idprodutoController.text;
+    this._pedido!.quantidade = _quantidadeController.text;
 
     try {
       PedidoRepository repository = PedidoRepository();
       await repository.alterar(this._pedido!);
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Cliente editado com sucesso')));
+          .showSnackBar(SnackBar(content: Text('Pedido editado com sucesso')));
     } catch (exception) {
       showError(context, "Erro editando cliente", exception.toString());
     }
@@ -104,7 +104,7 @@ class _EditarPedidoState extends State<EditarPedidoPage> {
 // CRUD | editar_boi_page.dart DAO
 /*-
   void _salvar() async {
-    this._boi.nome = _nomeController.text;
+    this._boi.data = _dataController.text;
     this._boi.raca = _racaController.text;
     this._boi.idade = int.parse(_idadeController.text);
   }  */
@@ -115,10 +115,10 @@ class _EditarPedidoState extends State<EditarPedidoPage> {
           key: _formKey,
           child: ListView(shrinkWrap: true, children: [
             Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              Text("Nome:"),
+              Text("Data:"),
               Expanded(
                   child: TextFormField(
-                controller: _nomeController,
+                controller: _dataController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Campo não pode ser vazio';
@@ -128,10 +128,10 @@ class _EditarPedidoState extends State<EditarPedidoPage> {
               ))
             ]),
             Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              Text("Sobrenome:"),
+              Text("Id Produto:"),
               Expanded(
                   child: TextFormField(
-                controller: _sobrenomeController,
+                controller: _idprodutoController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Campo não pode ser vazio';
@@ -141,10 +141,10 @@ class _EditarPedidoState extends State<EditarPedidoPage> {
               ))
             ]),
             Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              Text("CPF:"),
+              Text("Quantidade:"),
               Expanded(
                   child: TextFormField(
-                controller: _cpfController,
+                controller: _quantidadeController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Campo não pode ser vazio';
@@ -201,7 +201,7 @@ class _EditarPedidoState extends State<EditarPedidoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Editar Cliente"),
+        title: Text("Editar Pedido"),
       ),
       drawer: AppDrawer(),
       body: _buildForm(context),

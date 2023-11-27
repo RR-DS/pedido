@@ -58,7 +58,7 @@ OBTERTODOS-SQLITE-DAOECONECTION
     ConennectionFactory.factory.close();
 */
   //<Produto>[
-  //Boi(1, "nome", "raca", 10), //dar uma olhada aqui
+  //Boi(1, "descricao", "raca", 10), //dar uma olhada aqui
   //];
 
 //REMOVEBOI
@@ -89,12 +89,12 @@ ConennectionFactory.factory.close();
         context: context,
         builder: ((context) {
           return AlertDialog(
-              title: Text(produto.nome),
+              title: Text(produto.descricao),
               content: Column(
                 children: [
-                  Text("Nome: ${produto.nome}"),
-                  Text("Sobrenome: ${produto.sobrenome}"),
-                  Text("CPF: ${produto.cpf}"),
+                  Text("Descricao: ${produto.descricao}"),
+                  //Text("Sobrenome: ${produto.sobrenome}"),
+                  //Text("CPF: ${produto.cpf}"),
                 ],
               ),
               actions: [
@@ -114,14 +114,14 @@ ConennectionFactory.factory.close();
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-              title: Text(boi.nome),
+              title: Text(boi.descricao),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(children: [
                     Icon(Icons.create),
-                    Text("Nome: ${boi.nome}")
+                    Text("Descricao: ${boi.descricao}")
                   ]),
                   Row(children: [
                     Icon(Icons.assistant_photo),
@@ -161,7 +161,7 @@ ConennectionFactory.factory.close();
         context: context,
         builder: (context) => AlertDialog(
               title: Text("Remover Produto"),
-              content: Text("Gostaria realmente de remover ${c.nome}?"),
+              content: Text("Gostaria realmente de remover ${c.descricao}?"),
               actions: [
                 TextButton(
                   child: Text("Sim"),
@@ -180,8 +180,8 @@ ConennectionFactory.factory.close();
     Produto c = _lista[index];
     return ListTile(
       leading: const Icon(Icons.pets),
-      title: Text(c.nome),
-      subtitle: Text(c.cpf),
+      title: Text(c.descricao),
+      //subtitle: Text(c.cpf),
       onTap: () {
         _showItem(context, index);
       },

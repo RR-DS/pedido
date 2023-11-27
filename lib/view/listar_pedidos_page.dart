@@ -89,12 +89,12 @@ ConennectionFactory.factory.close();
         context: context,
         builder: ((context) {
           return AlertDialog(
-              title: Text(pedido.nome),
+              title: Text(pedido.data),
               content: Column(
                 children: [
-                  Text("Nome: ${pedido.nome}"),
-                  Text("Sobrenome: ${pedido.sobrenome}"),
-                  Text("CPF: ${pedido.cpf}"),
+                  Text("Data: ${pedido.data}"),
+                  Text("Id Produto: ${pedido.idproduto}"),
+                  Text("Quantidade: ${pedido.quantidade}"),
                 ],
               ),
               actions: [
@@ -161,7 +161,7 @@ ConennectionFactory.factory.close();
         context: context,
         builder: (context) => AlertDialog(
               title: Text("Remover Pedido"),
-              content: Text("Gostaria realmente de remover ${c.nome}?"),
+              content: Text("Gostaria realmente de remover ${c.id}?"),
               actions: [
                 TextButton(
                   child: Text("Sim"),
@@ -180,8 +180,8 @@ ConennectionFactory.factory.close();
     Pedido c = _lista[index];
     return ListTile(
       leading: const Icon(Icons.pets),
-      title: Text(c.nome),
-      subtitle: Text(c.cpf),
+      title: Text(c.data), //(c.nome)
+      //subtitle: Text(c.cpf),
       onTap: () {
         _showItem(context, index);
       },
