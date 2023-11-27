@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pedido/helper/error.dart';
 import 'package:pedido/main.dart';
 import 'package:pedido/model/cliente.dart';
+import 'package:pedido/repositories/cliente_repository.dart';
 import 'editar_cliente_page.dart';
 
 //LISTARBOIPAGE
@@ -61,7 +62,7 @@ OBTERTODOS-SQLITE-DAOECONECTION
   //];
 
 //REMOVEBOI
-  void _removerBoi(int id) async {
+  void _removerCliente(int id) async {
     try {
       ClienteRepository repository = ClienteRepository();
       await repository.remover(id);

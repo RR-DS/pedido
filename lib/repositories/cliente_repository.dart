@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:pedido/model/cliente.dart';
 import 'package:pedido/rest/cliente_rest.dart';
 
-class BoiRepository {
+class ClienteRepository {
   final ClienteRest api = ClienteRest();
   Future<Cliente> buscar(int id) async {
     return await api.buscar(id);
