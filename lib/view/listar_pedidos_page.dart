@@ -1,1 +1,1 @@
-class teste {}
+class Pedido {}

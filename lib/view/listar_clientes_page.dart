@@ -67,7 +67,7 @@ OBTERTODOS-SQLITE-DAOECONECTION
       ClienteRepository repository = ClienteRepository();
       await repository.remover(id);
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Boi $id removido com sucesso')));
+          SnackBar(content: Text('Cliente $id removido com sucesso')));
     } catch (exception) {
       showError(context, "Erro removendo boi", exception.toString());
     }

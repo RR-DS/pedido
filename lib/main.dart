@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pedido/view/editar_produto_page.dart';
 import 'routes/routes.dart';
 import 'view/editar_cliente_page.dart';
 import 'view/inserir_cliente_page.dart';
@@ -16,14 +17,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Boi System',
+      title: 'Pedido System',
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           primarySwatch: Colors.blue),
       home: MyHomePage(title: 'Pedido System'),
       routes: {
-        Routes.edit: (context) => EditarClientePage(),
+        Routes.edit: (context) => EditarProdutoPage(),
         Routes.insert: (context) => InserirClientePage(),
         Routes.list: (context) => ListarClientesPage(),
       },
@@ -66,13 +67,37 @@ class AppDrawer extends StatelessWidget {
           _createHeader(),
           _createDrawerItem(
               icon: Icons.add,
-              text: 'Inserir Boi',
+              text: 'Inserir Cliente',
               onTap: () =>
                   Navigator.pushReplacementNamed(context, Routes.insert)),
           Divider(),
           _createDrawerItem(
               icon: Icons.list,
-              text: 'Listar Bois',
+              text: 'Listar Clientes',
+              onTap: () =>
+                  Navigator.pushReplacementNamed(context, Routes.list)),
+          ListTile(title: Text('0.0.1'), onTap: () {}),
+          _createDrawerItem(
+              icon: Icons.add,
+              text: 'Inserir Produto',
+              onTap: () =>
+                  Navigator.pushReplacementNamed(context, Routes.insert)),
+          Divider(),
+          _createDrawerItem(
+              icon: Icons.list,
+              text: 'Listar Produtos',
+              onTap: () =>
+                  Navigator.pushReplacementNamed(context, Routes.list)),
+          ListTile(title: Text('0.0.1'), onTap: () {}),
+          _createDrawerItem(
+              icon: Icons.add,
+              text: 'Inserir Pedido',
+              onTap: () =>
+                  Navigator.pushReplacementNamed(context, Routes.insert)),
+          Divider(),
+          _createDrawerItem(
+              icon: Icons.list,
+              text: 'Listar Pedido',
               onTap: () =>
                   Navigator.pushReplacementNamed(context, Routes.list)),
           ListTile(title: Text('0.0.1'), onTap: () {}),
@@ -96,7 +121,7 @@ Widget _createHeader() {
         Positioned(
             bottom: 12.0,
             left: 16.0,
-            child: Text("Cadastro de Bois",
+            child: Text("Cadastro de Clientes",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
